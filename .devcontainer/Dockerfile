@@ -6,6 +6,10 @@ ENV TZ=UTC
 # Set up work directory
 WORKDIR /workspace
 
+# 使用国内源
+RUN sed -i 's/deb.debian.org/mirrors.huaweicloud.com/g' /etc/apt/sources.list.d/debian.sources
+RUN sed -i 's/security.debian.org/mirrors.huaweicloud.com/g' /etc/apt/sources.list.d/debian.sources
+
 # Install additional dev dependencies
 RUN apt-get update && apt-get install -y \
     zsh \
